@@ -12,3 +12,16 @@ pub struct DatabaseSettings {
     pub port: u16,
     pub database_name: String,
 }
+
+pub fn get_configuration() -> Result<Settings, config::ConfigError> {
+    // Initialize our configuration reader
+    let settings = config::Config::builder()
+        .add_source(config::File::new(
+            "configuration.yaml",
+            config::FileFormat::Yaml,
+        ))
+        .build()?;
+
+    // Try to convert the confguration values it read into our Settings type
+    settings.try_deserialize::<Settings>()
+}
