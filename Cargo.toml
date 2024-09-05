@@ -24,7 +24,7 @@ tracing-log = "0.1"
 secrecy = { version = "0.8", features = ["serde"] }
 
 [dependencies.sqlx]
-version = "0.7"
+version = "0.8"
 default-features = false
 features = [ 
   "runtime-tokio-rustls",
