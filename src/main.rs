@@ -1,7 +1,6 @@
 //! main.rs
 use sqlx::postgres::PgPoolOptions;
 use std::net::TcpListener;
-use tracing::dispatcher::set_default;
 use zero2prod::configuration::get_configuration;
 use zero2prod::email_client::EmailClient;
 use zero2prod::startup::run;

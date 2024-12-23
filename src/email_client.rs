@@ -2,7 +2,7 @@
 
 use crate::domain::SubscriberEmail;
 use reqwest::Client;
-
+#[allow(dead_code)]
 pub struct EmailClient {
     http_client: Client,
     base_url: String,
@@ -17,12 +17,11 @@ impl EmailClient {
             sender,
         }
     }
-
     pub async fn send_email(
         &self,
-        recipient: SubscriberEmail,
-        subject: &str,
-        text_context: &str,
+        _recipient: SubscriberEmail,
+        _subject: &str,
+        _text_context: &str,
     ) -> Result<(), String> {
         todo!()
     }
