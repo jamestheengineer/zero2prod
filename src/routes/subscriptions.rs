@@ -78,7 +78,6 @@ pub async fn send_confirmation_email(
     name = "Saving new subscriber details in the database",
     skip(new_subscriber, pool)
 )]
-
 pub async fn insert_subscriber(
     pool: &PgPool,
     new_subscriber: &NewSubscriber,
@@ -86,7 +85,7 @@ pub async fn insert_subscriber(
     sqlx::query!(
         r#"
     INSERT INTO subscriptions (id, email, name, subscribed_at, status)
-    VALUES ($1, $2, $3, $4, 'confirmed')
+    VALUES ($1, $2, $3, $4, 'pending_confirmation')
             "#,
         Uuid::new_v4(),
         new_subscriber.email.as_ref(),
