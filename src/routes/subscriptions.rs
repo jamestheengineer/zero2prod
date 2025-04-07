@@ -1,6 +1,6 @@
 use crate::domain::{NewSubscriber, SubscriberEmail, SubscriberName};
 use crate::email_client::EmailClient;
-use actix_web::{web, HttpResponse};
+use actix_web::{HttpResponse, web};
 use chrono::Utc;
 use sqlx::PgPool;
 use tracing::{self};
@@ -68,7 +68,10 @@ pub async fn send_confirmation_email(
         "Welcome to our newsletter!\nVisit {} to confirm your subscription.",
         confirmation_link
     );
-    let html_body = format!( "Welcome to our newsletter!<br />Click <a href=\"{}\">here</a> to confirm your subscription.", confirmation_link);
+    let html_body = format!(
+        "Welcome to our newsletter!<br />Click <a href=\"{}\">here</a> to confirm your subscription.",
+        confirmation_link
+    );
     email_client
         .send_email(new_subscriber.email, "Welcome!", &html_body, &plain_body)
         .await

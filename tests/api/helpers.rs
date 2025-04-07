@@ -2,9 +2,9 @@ use once_cell::sync::Lazy;
 use sqlx::{Connection, Executor, PgConnection, PgPool};
 use uuid::Uuid;
 use wiremock::MockServer;
-use zero2prod::configuration::{get_configuration, DatabaseSettings};
-use zero2prod::startup::get_connection_pool;
+use zero2prod::configuration::{DatabaseSettings, get_configuration};
 use zero2prod::startup::Application;
+use zero2prod::startup::get_connection_pool;
 use zero2prod::telemetry::{get_subscriber, init_subscriber};
 
 static TRACING: Lazy<()> = Lazy::new(|| {

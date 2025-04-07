@@ -24,9 +24,9 @@ impl AsRef<str> for SubscriberEmail {
 mod tests {
     use super::SubscriberEmail;
     use claims::assert_err;
-    use fake::faker::internet::en::SafeEmail;
     use fake::Fake;
-    use rand::{rngs::StdRng, SeedableRng};
+    use fake::faker::internet::en::SafeEmail;
+    use rand::{SeedableRng, rngs::StdRng};
 
     #[test]
     fn empty_string_is_rejected() {
